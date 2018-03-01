@@ -1,0 +1,29 @@
+{
+	"name": "greenpeace/planet4-child-theme-handbook",
+	"description": "Child theme for the Planet 4 Handbook",
+	"type":"wordpress-theme",
+	"version":"0.0.1",
+	"minimum-stability" : "stable",
+	"license": "GPL-3.0-or-later",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/greenpeace/planet4-child-theme-handbook/issues",
+		"source": "https://github.com/greenpeace/planet4-child-theme-handbook"
+	},
+	"extra": {
+		"installer-paths": {
+			"../../plugins/{$name}/": [
+				"wpackagist-plugin/*",
+				"type:wordpress-plugin"
+			]
+		}
+	},
+	"require": {
+		"wpackagist-plugin/timber-library": "1.7.*"
+	}
+}
