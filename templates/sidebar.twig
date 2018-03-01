@@ -1,0 +1,14 @@
+{% block sidebar %}
+	<nav id="sidebar" class="sidebar-navigation">
+		<a class="site-logo" href="{{ data_nav_bar.home_url }}">
+			<img src="{{ data_nav_bar.images }}gp-logo.svg" alt="Greenpeace"/>
+		</a>
+		<ul class="list-unstyled">
+			{% for key,item in navbar_menu.get_items %}
+				<li class="nav-item {{ class_name }} {{ item == item.current ? 'active' : '' }}">
+					<a class="nav-link" href="{{ item.get_link }}">{{ item.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+{% endblock %}

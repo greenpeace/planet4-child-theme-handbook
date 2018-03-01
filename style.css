@@ -11,3 +11,31 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: light, accessibility-ready
 Text Domain: planet4-child-theme-handbook
 */
+
+/* Primary Colors */
+:root {
+  --text: black;
+  --links: #03aad6;
+  --links-hover: #007799;
+  --nav-links: white;
+  --btn: #e51538;
+
+  --primary-bg: #01223D;
+  --secondary-bg: #f6f4e7;
+}
+
+body {
+	padding-left: 320px;
+}
+
+.sidebar-navigation {
+	width: 320px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	background-color: var(--primary-bg);
+  color: var(--nav-links);
+	padding: 20px;
+	z-index: 999;
+}
