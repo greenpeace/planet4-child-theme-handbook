@@ -12,30 +12,82 @@ Tags: light, accessibility-ready
 Text Domain: planet4-child-theme-handbook
 */
 
-/* Primary Colors */
 :root {
-  --text: black;
-  --links: #03aad6;
-  --links-hover: #007799;
-  --nav-links: white;
-  --btn: #e51538;
+  /* Primary Colors & Variables */
+  --black: black;
+  --white: white;
+  --light-grey: #f6f4e7;
 
-  --primary-bg: #01223D;
-  --secondary-bg: #f6f4e7;
+  --blue: #01223D;
+  --blue-60: #007799;
+  --blue-40: #03aad6;
+
+  --red: #e51538;
+
+  --sidebar-width: 250px;
 }
 
 body {
-	padding-left: 320px;
+  padding-left: var(--sidebar-width);
+}
+
+.top-navigation {
+  background: rgba(01, 34, 61, 0.6);
 }
 
 .sidebar-navigation {
-	width: 320px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	top: 0;
-	background-color: var(--primary-bg);
-  color: var(--nav-links);
-	padding: 20px;
-	z-index: 999;
+  width: var(--sidebar-width);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 10px 20px;
+  z-index: 999;
+}
+
+.admin-bar .sidebar-navigation {
+  top: 32px;
+}
+
+.nav-link {
+  color: var(--white);
+}
+
+.nav-link:hover {
+  color: var(--blue-40);
+}
+
+.nav-search-wrap {
+  position: absolute;
+  right: var(--sidebar-width);
+}
+
+.nav-search-wrap .form-control,
+.nav-search-wrap .form-control:focus {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+}
+
+.top-nav-search-btn {
+  color: var(--light-grey);
+}
+
+.site-footer {
+  background-color: var(--light-grey);
+  color: var(--blue);
+}
+
+.footer-links,
+.footer-links-secondary,
+.footer-social-media,
+.gp-year {
+  color: var(--blue);
+}
+
+.footer-social-media a:hover {
+  color: var(--blue);
+  opacity: 0.8;
 }
