@@ -7,6 +7,15 @@
 			{% for key,item in navbar_menu.get_items %}
 				<li class="nav-item {{ class_name }} {{ item == item.current ? 'active' : '' }}">
 					<a class="nav-link" href="{{ item.get_link }}">{{ item.title }}</a>
+					{% if item.get_children %}
+						<ul class="list-unstyled">
+							{% for child in item.get_children %}
+								<li class="nav-item nav-child {{ child == child.current ? 'active' : '' }}">
+									<a class="nav-link" href="{{ child.get_link }}">{{ child.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 				</li>
 			{% endfor %}
 		</ul>
