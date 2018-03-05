@@ -33,6 +33,7 @@ body {
 
 .top-navigation {
   background: rgba(01, 34, 61, 0.6);
+  height: 80px;
 }
 
 .sidebar-navigation {
@@ -49,6 +50,10 @@ body {
 
 .admin-bar .sidebar-navigation {
   top: 32px;
+}
+
+.sidebar-navigation > ul {
+  margin-top: 80px;
 }
 
 li.nav-item {
@@ -77,6 +82,7 @@ li.nav-child .nav-link {
 .nav-search-wrap {
   position: absolute;
   right: var(--sidebar-width);
+  margin-top: 18px;
 }
 
 .nav-search-wrap .form-control,
