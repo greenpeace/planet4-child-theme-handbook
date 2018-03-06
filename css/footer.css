@@ -1,0 +1,16 @@
+.site-footer {
+  background-color: var(--light-grey);
+  color: var(--blue);
+}
+
+.footer-links,
+.footer-links-secondary,
+.footer-social-media,
+.gp-year {
+  color: var(--blue);
+}
+
+.footer-social-media a:hover {
+  color: var(--blue);
+  opacity: 0.8;
+}
