@@ -19,3 +19,7 @@ Text Domain: planet4-child-theme-handbook
 body {
   padding-left: var(--sidebar-width);
 }
+
+div.page-template {
+  font-family: "Lora", serif;
+}
