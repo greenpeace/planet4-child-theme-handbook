@@ -2,7 +2,7 @@
 	"name": "greenpeace/planet4-child-theme-handbook",
 	"description": "Child theme for the Planet 4 Handbook",
 	"type":"wordpress-theme",
-	"version":"0.0.3",
+	"version":"0.0.4",
 	"minimum-stability" : "stable",
 	"license": "GPL-3.0-or-later",
 	"repositories": [
