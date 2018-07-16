@@ -23,3 +23,7 @@ body {
 div.page-template {
   font-family: "Lora", serif;
 }
+
+div.page-header {
+  padding-top: 104px;
+}
