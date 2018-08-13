@@ -24,6 +24,10 @@ div.page-template {
   font-family: "Lora", serif;
 }
 
+div.page-header {
+  padding-top: 104px;
+}
+
 h1, h2, h3, h4, h5, h6.page-template {
   font-family: "Roboto", sans-serif;
 }
