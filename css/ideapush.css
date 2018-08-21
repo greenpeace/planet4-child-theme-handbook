@@ -1,0 +1,26 @@
+/*
+IdeaPush related changes
+Add font family to anything that uses FontAwsome to avoid conflict with FAv5 that we use
+Fix issuses with ideas presentation
+Change the place where the author appears
+*/
+.fa-thumbs-o-up::before {
+    font-family: FontAwesome;
+}
+
+.fa-comment-o::before {
+    font-family: FontAwesome;
+}
+
+.ideapush-container i {
+    font-family: FontAwesome;
+}
+
+footer.author-block {
+    clear: both;
+}
+
+.single-idea .page-header .single-post-meta span.comment-link img {
+    width: 14px;
+    margin-right: 3px;
+}
