@@ -1,0 +1,7 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="container content-wrapper">
+		{{content|e('wp_kses_post')|raw}}
+	</div><!-- /content-wrapper -->
+{% endblock %}
