@@ -18,6 +18,12 @@ add_filter( 'wp_kses_allowed_html', 'set_custom_allowed_attributes_filter_handbo
 function set_custom_allowed_attributes_filter_handbook( $allowedposttags ) {
 	// Allow style so that ideaPush works.
 	$allowedposttags['style']=[];
+	$allowedposttags['div'] = [
+		'class'    => true,
+		'data'     => true,
+		'align'    => true,
+		'style'    => true,
+	];
 
 	return $allowedposttags;
 }
