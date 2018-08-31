@@ -17,12 +17,14 @@ Text Domain: planet4-child-theme-handbook
 @import 'css/footer.css';
 @import 'css/ideapush.css';
 
-body {
-  padding-left: var(--sidebar-width);
+@media (min-width: 992px) {
+  body {
+    padding-left: var(--sidebar-width);
+  }
 }
 
 div.page-template {
-  font-family: "Lora", serif;
+  font-family: Lora, serif;
 }
 
 div.page-header {
@@ -30,5 +32,5 @@ div.page-header {
 }
 
 h1, h2, h3, h4, h5, h6.page-template {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
