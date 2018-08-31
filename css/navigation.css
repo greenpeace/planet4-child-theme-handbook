@@ -27,10 +27,7 @@
     padding: 10px 20px;
     z-index: 999;
     font-family: Roboto;
-  }
-
-  .admin-bar .sidebar-navigation {
-    top: 32px;
+    display: block;
   }
 
   .sidebar-navigation > ul {
