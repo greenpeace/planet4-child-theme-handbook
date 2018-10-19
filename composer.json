@@ -24,6 +24,5 @@
 		}
 	},
 	"require": {
-		"wpackagist-plugin/timber-library": "1.7.*"
 	}
 }
