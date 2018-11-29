@@ -28,3 +28,11 @@ footer.author-block {
 ul.dynamic-idea-listing {
     list-style: none;
 }
+
+.ideapush-container-form .ideapush-form-custom-field input[type="radio"] {
+    margin-right: 10px;
+    display: inline-block;
+    width: auto;
+    opacity: 1;
+    position: relative;
+}
