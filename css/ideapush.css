@@ -24,3 +24,7 @@ footer.author-block {
     width: 14px;
     margin-right: 3px;
 }
+
+ul.dynamic-idea-listing {
+    list-style: none;
+}
