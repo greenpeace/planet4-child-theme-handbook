@@ -29,6 +29,17 @@ ul.dynamic-idea-listing {
     list-style: none;
 }
 
+ul.dynamic-idea-listing li {
+    margin-bottom: 20px;
+}
+
+ul.dynamic-idea-listing li::after {
+    /* Injecting clearfix technique */
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .ideapush-container-form .ideapush-form-custom-field input[type="radio"] {
     margin-right: 10px;
     display: inline-block;
