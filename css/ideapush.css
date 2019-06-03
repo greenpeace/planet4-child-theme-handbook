@@ -48,6 +48,30 @@ ul.dynamic-idea-listing li::after {
     position: relative;
 }
 
+@media (max-width: 576px) {
+    .alertify .dialog>* {
+        width: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .alertify .dialog>* {
+        width: 576px;
+    }
+}
+
+@media (min-width: 992px) {
+    .alertify .dialog>* {
+        width: 768px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .alertify .dialog>* {
+        width: 900px;
+    }
+}
+
 .msg img {
     max-width: 100%;
 }
