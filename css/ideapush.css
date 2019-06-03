@@ -47,3 +47,7 @@ ul.dynamic-idea-listing li::after {
     opacity: 1;
     position: relative;
 }
+
+.msg img {
+    max-width: 100%;
+}
