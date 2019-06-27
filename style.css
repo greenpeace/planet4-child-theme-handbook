@@ -16,6 +16,7 @@ Text Domain: planet4-child-theme-handbook
 @import 'css/navigation.css';
 @import 'css/footer.css';
 @import 'css/ideapush.css';
+@import 'css/author.css';
 
 @media (min-width: 992px) {
   body {
