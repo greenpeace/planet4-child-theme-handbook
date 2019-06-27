@@ -1,0 +1,16 @@
+<li id="result-row-{{ idea.ID }}" class="media search-result-list-item">
+	<div id="tease-{{ idea.ID }}" class="media-body search-result-item-body tease tease-{{ idea.post_type }}">
+		<div class="search-result-tags top-page-tags">
+			<a href="#" class="search-result-item-head no-btn tag-item tag-item--main page-type">{{ __( 'IDEA', 'planet4-child-theme-handbook' ) }}</a>
+		</div>
+
+		<a href="{{ idea.link() }}" class="search-result-item-headline">{{ idea.title|e('wp_kses_post')|raw }}</a>
+
+		<div class="search-result-item-info">
+			<span class="search-result-item-date">{{ idea.post_date|date }}</span>
+		</div>
+
+		<p class="search-result-item-content">{{ idea.post_content|excerpt( 30 )|e('wp_kses_post')|raw }}</p>
+
+	</div>
+</li>
