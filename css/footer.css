@@ -6,7 +6,9 @@
 .footer-links,
 .footer-links-secondary,
 .footer-social-media,
-.gp-year {
+.gp-year,
+.copyright-text,
+.copyright-text a {
   color: var(--blue);
 }
 
