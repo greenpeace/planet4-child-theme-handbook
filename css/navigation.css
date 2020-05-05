@@ -22,7 +22,7 @@
     left: 0;
     bottom: 0;
     top: 0;
-    background-color: var(--blue);
+    background-color: var(--sidebar-blue);
     color: var(--white);
     padding: 10px 20px;
     z-index: 99;
@@ -65,7 +65,7 @@
 
   .nav-search-wrap .form-control,
   .nav-search-wrap .form-control:focus {
-    background-color: var(--blue);
+    background-color: var(--sidebar-blue);
     color: var(--white);
     border: none;
   }
