@@ -12,7 +12,14 @@
   color: var(--blue);
 }
 
-.footer-social-media a:hover {
+.site-footer .container .footer-links a:hover,
+.site-footer .container .footer-links-secondary a:hover,
+.site-footer .container .gp-year a:hover,
+.site-footer .container .copyright-text a:hover {
+  color: var(--handbook-footer-links-hover);
+}
+
+.site-footer .container .footer-social-media a:hover {
   color: var(--blue);
   opacity: 0.8;
 }
