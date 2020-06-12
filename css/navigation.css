@@ -72,5 +72,6 @@
 
   .top-nav-search-btn {
     color: var(--light-grey);
+    background-color: var(--sidebar-blue) !important;
   }
 }
