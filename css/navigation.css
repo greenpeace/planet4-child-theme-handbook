@@ -51,7 +51,8 @@
     padding: 0;
   }
 
-  li.nav-child .nav-link {
+  li.nav-child .nav-link,
+  li.nav-item {
     text-transform: none;
     line-height: 1.5;
     font-size: .8rem;
