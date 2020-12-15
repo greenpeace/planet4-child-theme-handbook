@@ -39,6 +39,10 @@ function set_custom_allowed_attributes_filter_handbook( $allowedposttags ) {
 		'style'    => true,
 	];
 
+	// Allow below tags for carousel slider.
+	$allowedposttags['div']['data-render']     = true;
+	$allowedposttags['div']['data-attributes'] = true;
+
 	return $allowedposttags;
 }
 
