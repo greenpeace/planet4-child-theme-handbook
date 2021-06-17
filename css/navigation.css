@@ -41,6 +41,8 @@
   .nav-link {
     color: var(--white);
     line-height: 1.7;
+    font-weight: 700;
+    padding: 0px 0px;
   }
 
   .nav-link:hover {
@@ -55,7 +57,8 @@
   li.nav-item {
     text-transform: none;
     line-height: 1.5;
-    font-size: .8rem;
+    font-size: 1rem;
+    font-weight: 400;
   }
 
   .nav-search-wrap {
