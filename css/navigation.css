@@ -42,7 +42,7 @@
     color: var(--white);
     line-height: 1.7;
     font-weight: 700;
-    float: left;
+    padding: 0px 0px;
   }
 
   .nav-link:hover {
