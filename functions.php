@@ -6,6 +6,7 @@
 
 add_action( 'wp_enqueue_scripts', 'enqueue_child_styles', 99);
 add_filter( 'wp_kses_allowed_html', 'set_custom_allowed_attributes_filter_handbook');
+add_action( 'admin_bar_menu', 'customize_visit_site', 80 );
 
 // From the FAQ of IdeaPush's Support Tab under IdeaPush Settings (inside WP Admin)
 add_filter( 'idea_push_change_author_link', 'idea_push_change_author_link_callback', 10, 1 );
@@ -84,6 +85,16 @@ function set_child_theme_allowed_block_types( $allowed_block_types, $post ) {
 
 	// array_values is required as array_filter removes indexes from the array.
 	return array_values($allowed_block_types);
+}
+
+function customize_visit_site( $wp_admin_bar ) {
+
+    // Get a reference to the view-site node to modify.
+    $node = $wp_admin_bar->get_node('view-site');
+
+	// Update "visit site" link.
+	$node->href = home_url() . '/handbook/';
+    $wp_admin_bar->add_node($node);
 }
 
 add_filter( 'allowed_block_types', 'set_child_theme_allowed_block_types', 15, 2 );
