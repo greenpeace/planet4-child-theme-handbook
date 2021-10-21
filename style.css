@@ -35,3 +35,15 @@ div.page-header {
 h1, h2, h3, h4, h5, h6.page-template {
   font-family: Roboto, sans-serif;
 }
+
+/* Notice banner for production updates */
+.notice-banner {
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .notice-banner {
+    margin-top: 54px
+  }
+}

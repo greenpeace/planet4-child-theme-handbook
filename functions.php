@@ -98,3 +98,16 @@ function customize_visit_site( $wp_admin_bar ) {
 }
 
 add_filter( 'allowed_block_types', 'set_child_theme_allowed_block_types', 15, 2 );
+
+/**
+ * Notice banner for production updates on each admin page.
+ *
+ * @return string
+ */
+function general_admin_notice(){
+	echo '<div class="notice notice-warning is-dismissible">
+		<p>The P4 team is currently running some changes to the site. Please be aware that you might be redirected to some other sources on the world wide web or you will find the content you are looking for in another format. If you notice anything missing, please let us know in the <b><a href="https://app.slack.com/client/T013PTEK4AV/C014UMRC4AJ" target="_blank">p4-general</a></b> Slack channel. Thank you!</p>
+	</div>';
+}
+
+add_action('admin_notices', 'general_admin_notice');
