@@ -46,7 +46,8 @@
   }
 
   .nav-link:hover {
-    color: var(--blue-40);
+    color: var(--white);
+    text-decoration: underline;
   }
 
   .nav-link:visited {
