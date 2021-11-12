@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6.page-template {
 
 /* Notice banner for production updates */
 .notice-banner {
-  margin-top: 80px;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
