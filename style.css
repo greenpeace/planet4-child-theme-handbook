@@ -103,11 +103,11 @@ Text Domain: planet4-child-theme-handbook
   }
 }
 
-div.page-template {
+.page-content {
   font-family: Lora, serif;
 }
 
-div.page-header {
+.page-header {
   padding-top: 104px;
 }
 
