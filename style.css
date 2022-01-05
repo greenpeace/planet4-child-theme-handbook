@@ -29,6 +29,11 @@ Text Domain: planet4-child-theme-handbook
     display: none;
   }
 
+  .site-logo {
+    margin-inline-start: 0;
+    padding: 0 20px;
+  }
+
   .sidebar-navigation {
     width: var(--sidebar-width);
     position: absolute;
@@ -85,10 +90,14 @@ Text Domain: planet4-child-theme-handbook
     padding-inline-start: 15px;
   }
 
-  .nav-search .form-control {
+  #search_input {
     height: 40px;
     border: none;
     padding: 5px 10px;
+    background-color: white;
+    width: 100%;
+    border-radius: 4px;
+    color: black;
   }
 
   .nav-search-btn {
@@ -99,7 +108,7 @@ Text Domain: planet4-child-theme-handbook
     background: white;
     color: var(--blue);
     top: 4px;
-    right: 0;
+    right: 4px;
   }
 }
 
