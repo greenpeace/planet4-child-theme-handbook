@@ -20,6 +20,10 @@ Text Domain: planet4-child-theme-handbook
   display: none;
 }
 
+.active .nav-child .nav-link {
+  text-decoration: none;
+}
+
 @media (min-width: 992px) {
   body {
     padding-left: var(--sidebar-width);
