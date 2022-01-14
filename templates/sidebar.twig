@@ -2,7 +2,7 @@
 	{% set search_label = __( 'Search', 'planet4-master-theme' ) %}
 	<p class="has-orange-hover-color has-yellow-background-color has-text-color has-background notice-banner">The P4 team is currently running some changes to the site. Please be aware that you might be redirected to some other sources on the world wide web or you will find the content you are looking for in another format. If you notice anything missing, please let us know in the <b><a href="https://app.slack.com/client/T013PTEK4AV/C014UMRC4AJ" target="_blank">p4-general</a></b> Slack channel. Thank you!</p>
 	<nav id="sidebar" class="sidebar-navigation">
-		<a class="site-logo" href="{{ data_nav_bar.home_url }}/handbook">
+		<a class="site-logo" href="{{ data_nav_bar.home_url }}handbook/">
 			<img src="{{ data_nav_bar.images }}planet4.png" alt="Planet 4 Handbook"/>
 		</a>
 		<form id="search_form" action="{{ data_nav_bar.home_url }}" class="form nav-search">
@@ -31,12 +31,12 @@
 		<ul class="list-unstyled">
 			{% for key,item in navbar_menu.get_items %}
 				<li class="nav-item {{ class_name }} {{ item == item.current ? 'active' : '' }}">
-					<a class="nav-link" href="{{ item.get_link }}">{{ item.title }}</a>
+					<a class="nav-link {% if item.classes %}{{ item.classes|join(' ')}}{% endif %}" href="{{ item.get_link }}" {% if item.target %}target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
 					{% if item.get_children %}
 						<ul class="list-unstyled">
 							{% for child in item.get_children %}
 								<li class="nav-item nav-child {{ child == child.current ? 'active' : '' }}">
-									<a class="nav-link" href="{{ child.get_link }}">{{ child.title }}</a>
+									<a class="nav-link {% if child.classes %}{{ child.classes|join(' ')}}{% endif %}" href="{{ child.get_link }}" {% if child.target %}target="{{ child.target }}"{% endif %}>{{ child.title }}</a>
 								</li>
 							{% endfor %}
 						</ul>
