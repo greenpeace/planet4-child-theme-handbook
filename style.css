@@ -20,6 +20,10 @@ Text Domain: planet4-child-theme-handbook
   display: none;
 }
 
+.burger-menu-footer {
+  display: none;
+}
+
 @media (min-width: 992px) {
   body {
     padding-left: var(--sidebar-width);
@@ -56,7 +60,10 @@ Text Domain: planet4-child-theme-handbook
     padding-bottom: 20px;
   }
 
-  a.nav-link::before {
+
+  a.nav-link::before,
+  a.nav-link:hover::before,
+  .active > a.nav-link::before {
     content: none;
   }
 
