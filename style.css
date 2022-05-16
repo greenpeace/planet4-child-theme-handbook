@@ -20,8 +20,8 @@ Text Domain: planet4-child-theme-handbook
   display: none;
 }
 
-.active .nav-child .nav-link {
-  text-decoration: none;
+.burger-menu-footer {
+  display: none;
 }
 
 @media (min-width: 992px) {
@@ -58,6 +58,13 @@ Text Domain: planet4-child-theme-handbook
 
   li.nav-item {
     padding-bottom: 20px;
+  }
+
+
+  a.nav-link::before,
+  a.nav-link:hover::before,
+  .active > a.nav-link::before {
+    content: none;
   }
 
   .nav-link {
