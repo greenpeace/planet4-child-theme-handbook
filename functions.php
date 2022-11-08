@@ -98,3 +98,22 @@ function customize_visit_site( $wp_admin_bar ) {
 }
 
 add_filter( 'allowed_block_types', 'set_child_theme_allowed_block_types', 15, 2 );
+
+//Add Idea push signup/login banner on idea details page for non logged in visitors.
+function idea_push_add_login_banner_after_title( $content ) {
+	if ( is_single() && 'idea' === get_post_type() && ! is_user_logged_in() ) {
+		$custom_content  = '<p class="ideapush-has-yellow-background-color has-text-color has-background notice-banner">';
+		$custom_content .= 'Please <a href="https://planet4.greenpeace.org/wp-admin/" class="share-btn">Log in</a> to the handbook to vote or submit new ideas';
+		$custom_content .= '<br />';
+		$custom_content .= 'Don\'t have a Handbook account? Just send us an <a href="mailto:?to=planet4-pm-group@greenpeace.org" target="_blank">email</a>';
+		$custom_content .= '</p>';
+
+		$custom_content .= $content;
+
+		return $custom_content;
+	}
+
+	return $content;
+}
+
+add_filter( 'the_content', 'idea_push_add_login_banner_after_title', 9, 1);
