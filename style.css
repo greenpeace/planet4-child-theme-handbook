@@ -134,3 +134,7 @@ Text Domain: planet4-child-theme-handbook
 h1, h2, h3, h4, h5, h6.page-template {
   font-family: Roboto, sans-serif;
 }
+
+.ideapush-has-yellow-background-color {
+  background-color: #FFF6BD;
+}
