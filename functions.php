@@ -91,6 +91,9 @@ function customize_visit_site( $wp_admin_bar ) {
 
     // Get a reference to the view-site node to modify.
     $node = $wp_admin_bar->get_node('view-site');
+    if (!$node) {
+        return;
+    }
 
 	// Update "visit site" link.
 	$node->href = home_url() . '/handbook/';
