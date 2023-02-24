@@ -85,6 +85,7 @@ Text Domain: planet4-child-theme-handbook
 
   li.nav-child {
     padding: 0;
+    padding-left: 12px;
   }
 
   li.nav-child .nav-link,
