@@ -142,4 +142,5 @@ h1, h2, h3, h4, h5, h6.page-template {
 
 :root {
   --nav-link--color: #fff;
+  --nav-link--visited--color: #fff;
 }
