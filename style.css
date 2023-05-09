@@ -139,3 +139,7 @@ h1, h2, h3, h4, h5, h6.page-template {
 .ideapush-has-yellow-background-color {
   background-color: #FFF6BD;
 }
+
+:root {
+  --nav-link--color: #fff;
+}
