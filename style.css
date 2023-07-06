@@ -44,11 +44,10 @@ Text Domain: planet4-child-theme-handbook
     left: 0;
     bottom: 0;
     top: 0;
-    background-color: var(--sidebar-blue);
-    color: var(--white);
+    background-color: var(--beige-100);
+    color: var(--grey-900);
     padding: 10px 20px;
     z-index: 99;
-    font-family: Roboto, sans-serif;
     display: block;
   }
 
@@ -58,6 +57,7 @@ Text Domain: planet4-child-theme-handbook
 
   li.nav-item {
     padding-bottom: 20px;
+    font-family: "GreenpeaceSans";
   }
 
 
@@ -67,25 +67,31 @@ Text Domain: planet4-child-theme-handbook
     content: none;
   }
 
-  .nav-link {
-    color: var(--white);
+  a.nav-link {
+    color: var(--grey-900);
     line-height: 1.7;
     font-weight: 700;
-    padding: 0px 0px;
+    padding: 4px 12px;
+    border-radius: 4px;
   }
 
-  .nav-link:hover {
-    color: var(--white);
-    text-decoration: underline;
+  a.nav-link:hover {
+    color: var(--grey-900);
+    background: var(--beige-200);
   }
 
-  .nav-link:visited {
-    color: var(--white);
+  .active > .nav-link {
+    background: var(--beige-300);
+  }
+
+  a.nav-link:visited {
+    color: var(--grey-900);
   }
 
   li.nav-child {
     padding: 0;
     padding-left: 12px;
+    font-family: "SourceSans3";
   }
 
   li.nav-child .nav-link,
@@ -118,7 +124,7 @@ Text Domain: planet4-child-theme-handbook
     font-size: 1.25rem;
     line-height: 22px;
     background: white;
-    color: var(--blue);
+    color: var(--grey-900);
     top: 4px;
     right: 4px;
   }
