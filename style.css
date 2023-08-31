@@ -146,6 +146,10 @@ h1, h2, h3, h4, h5, h6.page-template {
   background-color: #FFF6BD;
 }
 
+.mark, mark {
+  padding: 0 .2em;
+}
+
 :root {
   --nav-link--color: #fff;
   --nav-link--visited--color: #fff;
