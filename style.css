@@ -130,16 +130,8 @@ Text Domain: planet4-child-theme-handbook
   }
 }
 
-.page-content {
-  font-family: Lora, serif;
-}
-
 .page-header {
   padding-top: 104px;
-}
-
-h1, h2, h3, h4, h5, h6.page-template {
-  font-family: Roboto, sans-serif;
 }
 
 .ideapush-has-yellow-background-color {
