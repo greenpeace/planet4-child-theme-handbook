@@ -53,7 +53,7 @@ function enqueue_child_styles() {
 	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', [], $css_creation );
 }
 
-const BLOCK_WHITELIST = [
+const BLOCK_ALLOWLIST = [
 	'post' => [
 		// E.g.: 'gpnl/blockquote'.
 		'core/code',
@@ -65,21 +65,34 @@ const BLOCK_WHITELIST = [
 	],
 ];
 
-const BLOCK_BLACKLIST = [
+const BLOCK_DENYLIST = [
 	'post' => [
 		// E.g.: 'planet4-blocks/gallery' or 'core/quote'.
 	],
 	'page' => [],
 ];
 
-function set_child_theme_allowed_block_types( $allowed_block_types, $post ) {
-	if ( ! empty( BLOCK_WHITELIST[ $post->post_type ] )) {
-		$allowed_block_types = array_merge( $allowed_block_types, BLOCK_WHITELIST[$post->post_type] );
+/**
+ * Allowed block types based on post type
+ *
+ * @param array|bool $allowed_block_types array of allowed block types.
+ * @param object $context Current editor context.
+ *
+ * @return array Array with allowed types.
+ */
+function set_child_theme_allowed_block_types( $allowed_block_types, $context ) {
+	$post_type = $context->post ? $context->post->post_type : null;
+	if ( ! $post_type ) {
+		return array_merge( $allowed_block_types, BLOCK_ALLOWLIST['page'] );
 	}
 
-	if ( ! empty( BLOCK_BLACKLIST[ $post->post_type ] )) {
-		$allowed_block_types = array_filter( $allowed_block_types, function ( $element ) use ( $post ) {
-			return !in_array( $element, BLOCK_BLACKLIST[ $post->post_type ] );
+	if ( ! empty( BLOCK_ALLOWLIST[ $post_type ] )) {
+		$allowed_block_types = array_merge( $allowed_block_types, BLOCK_ALLOWLIST[$post_type] );
+	}
+
+	if ( ! empty( BLOCK_DENYLIST[ $post_type ] )) {
+		$allowed_block_types = array_filter( $allowed_block_types, function ( $element ) use ( $post_type ) {
+			return !in_array( $element, BLOCK_DENYLIST[ $post_type ] );
 		} );
 	}
 
@@ -100,7 +113,7 @@ function customize_visit_site( $wp_admin_bar ) {
     $wp_admin_bar->add_node($node);
 }
 
-add_filter( 'allowed_block_types', 'set_child_theme_allowed_block_types', 15, 2 );
+add_filter( 'allowed_block_types_all', 'set_child_theme_allowed_block_types', 15, 2 );
 
 //Add Idea push signup/login banner on idea details page for non logged in visitors.
 function idea_push_add_login_banner_after_title( $content ) {
