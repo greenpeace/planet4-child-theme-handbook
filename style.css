@@ -14,7 +14,6 @@ Text Domain: planet4-child-theme-handbook
 
 @import 'css/variables.css';
 @import 'css/ideapush.css';
-@import 'css/author.css';
 
 .sidebar-navigation {
   display: none;
