@@ -203,3 +203,27 @@ function planet4_render_announcements_page() {
 	</div>
 	<?php
 }
+
+/**
+ * Register Announcements REST API endpoint
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'planet4/v1', '/announcements', [
+		'methods'             => 'GET',
+		'callback'            => 'planet4_get_announcements',
+		'permission_callback' => '__return_true', // public endpoint
+	]);
+});
+
+/**
+ * Return announcements content
+ */
+function planet4_get_announcements() {
+	return [
+		'content' => apply_filters(
+			'the_content',
+			get_option( 'planet4_announcements_content', '' )
+		),
+		'last_updated' => get_option( 'planet4_announcements_last_updated' ),
+	];
+}
