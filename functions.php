@@ -170,6 +170,10 @@ function planet4_render_announcements_page() {
 			'planet4_announcements_content',
 			wp_kses_post( $_POST['planet4_announcements_content'] )
 		);
+		update_option(
+			'planet4_announcements_last_updated',
+			current_datetime()->format('Y-m-d H:i:s')
+		);
 
 		echo '<div class="updated"><p>Announcements updated.</p></div>';
 	}
