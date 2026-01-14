@@ -133,3 +133,101 @@ function idea_push_add_login_banner_after_title( $content ) {
 }
 
 add_filter( 'the_content', 'idea_push_add_login_banner_after_title', 9, 1);
+
+add_action( 'admin_menu', 'create_admin_menu' );
+
+/**
+ * Create menu entry.
+ */
+function create_admin_menu() {
+	$current_user = wp_get_current_user();
+
+	if ( in_array( 'administrator', $current_user->roles, true ) || in_array( 'editor', $current_user->roles, true ) ) {
+		add_menu_page(
+			'Add an announcement',
+			'Announcements',
+			'manage_options',
+			'p4announcements',
+			'planet4_render_announcements_page',
+			'dashicons-megaphone'
+		);
+	}
+}
+
+/**
+ * Render Announcements admin page
+ */
+function planet4_render_announcements_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	// Save on submit
+	if ( isset($_POST['planet4_announcements_nonce']) &&
+		wp_verify_nonce($_POST['planet4_announcements_nonce'], 'save_announcements') ) {
+
+		update_option(
+			'planet4_announcements_content',
+			wp_kses_post( $_POST['planet4_announcements_content'] )
+		);
+		update_option(
+			'planet4_announcements_last_updated',
+			current_datetime()->format('Y-m-d H:i:s')
+		);
+
+		echo '<div class="updated"><p>Announcements updated.</p></div>';
+	}
+
+	$content = get_option( 'planet4_announcements_content', '' );
+	?>
+
+	<div class="wrap">
+		<h1>Announcements</h1>
+
+		<form method="post">
+			<?php wp_nonce_field( 'save_announcements', 'planet4_announcements_nonce' ); ?>
+
+			<?php
+			wp_editor(
+				$content,
+				'planet4_announcements_content',
+				[
+					'textarea_name' => 'planet4_announcements_content',
+					'media_buttons' => false,
+					'teeny'         => false,
+					'textarea_rows' => 10,
+				]
+			);
+			?>
+
+			<p>
+				<input type="submit" class="button button-primary" value="Save Announcements">
+			</p>
+		</form>
+	</div>
+	<?php
+}
+
+/**
+ * Register Announcements REST API endpoint
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'planet4/v1', '/announcements', [
+		'methods'             => 'GET',
+		'callback'            => 'planet4_get_announcements',
+		'permission_callback' => '__return_true', // public endpoint
+	]);
+});
+
+/**
+ * Return announcements content
+ */
+function planet4_get_announcements() {
+	return [
+		'content' => apply_filters(
+			'the_content',
+			get_option( 'planet4_announcements_content', '' )
+		),
+		'last_updated' => get_option( 'planet4_announcements_last_updated' ),
+	];
+}
