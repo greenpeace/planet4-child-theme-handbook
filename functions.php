@@ -4,12 +4,12 @@
  * Additional code for the child theme goes in here.
  */
 
-add_action( 'wp_enqueue_scripts', 'enqueue_child_styles', 99);
-add_filter( 'wp_kses_allowed_html', 'set_custom_allowed_attributes_filter_handbook');
-add_action( 'admin_bar_menu', 'customize_visit_site', 80 );
+add_action('wp_enqueue_scripts', 'enqueue_child_styles', 99);
+add_filter('wp_kses_allowed_html', 'set_custom_allowed_attributes_filter_handbook');
+add_action('admin_bar_menu', 'customize_visit_site', 80);
 
 // From the FAQ of IdeaPush's Support Tab under IdeaPush Settings (inside WP Admin)
-add_filter( 'idea_push_change_author_link', 'idea_push_change_author_link_callback', 10, 1 );
+add_filter('idea_push_change_author_link', 'idea_push_change_author_link_callback', 10, 1);
 
 /**
  * Change Author links for IdeaPush pages.
@@ -18,7 +18,7 @@ add_filter( 'idea_push_change_author_link', 'idea_push_change_author_link_callba
  *
  * @return string
  */
-function idea_push_change_author_link_callback( $userId ) {
+function idea_push_change_author_link_callback($userId) {
 	return get_author_posts_url($userId);
 }
 
@@ -30,18 +30,18 @@ function idea_push_change_author_link_callback( $userId ) {
  *
  * @return array
  */
-function set_custom_allowed_attributes_filter_handbook( $allowedposttags ) {
+function set_custom_allowed_attributes_filter_handbook($allowedposttags) {
 	// Allow style so that ideaPush works.
 	$allowedposttags['style']=[];
 	$allowedposttags['div'] = [
-		'class'    => true,
-		'data'     => true,
-		'align'    => true,
-		'style'    => true,
+		'class' => true,
+		'data' => true,
+		'align' => true,
+		'style' => true,
 	];
 
 	// Allow below tags for carousel slider.
-	$allowedposttags['div']['data-render']     = true;
+	$allowedposttags['div']['data-render'] = true;
 	$allowedposttags['div']['data-attributes'] = true;
 
 	return $allowedposttags;
@@ -50,7 +50,7 @@ function set_custom_allowed_attributes_filter_handbook( $allowedposttags ) {
 function enqueue_child_styles() {
 	$css_creation = filectime(get_stylesheet_directory() . '/style.css');
 
-	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', [], $css_creation );
+	wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', [], $css_creation);
 }
 
 const BLOCK_ALLOWLIST = [
@@ -80,19 +80,19 @@ const BLOCK_DENYLIST = [
  *
  * @return array Array with allowed types.
  */
-function set_child_theme_allowed_block_types( $allowed_block_types, $context ) {
+function set_child_theme_allowed_block_types($allowed_block_types, $context) {
 	$post_type = $context->post ? $context->post->post_type : null;
-	if ( ! $post_type ) {
-		return array_merge( $allowed_block_types, BLOCK_ALLOWLIST['page'] );
+	if (!$post_type) {
+		return array_merge($allowed_block_types, BLOCK_ALLOWLIST['page']);
 	}
 
-	if ( ! empty( BLOCK_ALLOWLIST[ $post_type ] )) {
-		$allowed_block_types = array_merge( $allowed_block_types, BLOCK_ALLOWLIST[$post_type] );
+	if (!empty( BLOCK_ALLOWLIST[$post_type])) {
+		$allowed_block_types = array_merge($allowed_block_types, BLOCK_ALLOWLIST[$post_type]);
 	}
 
 	if ( ! empty( BLOCK_DENYLIST[ $post_type ] )) {
-		$allowed_block_types = array_filter( $allowed_block_types, function ( $element ) use ( $post_type ) {
-			return !in_array( $element, BLOCK_DENYLIST[ $post_type ] );
+		$allowed_block_types = array_filter($allowed_block_types, function ($element) use ($post_type) {
+			return !in_array($element, BLOCK_DENYLIST[$post_type]);
 		} );
 	}
 
@@ -100,7 +100,7 @@ function set_child_theme_allowed_block_types( $allowed_block_types, $context ) {
 	return array_values($allowed_block_types);
 }
 
-function customize_visit_site( $wp_admin_bar ) {
+function customize_visit_site($wp_admin_bar) {
 
     // Get a reference to the view-site node to modify.
     $node = $wp_admin_bar->get_node('view-site');
@@ -113,11 +113,11 @@ function customize_visit_site( $wp_admin_bar ) {
     $wp_admin_bar->add_node($node);
 }
 
-add_filter( 'allowed_block_types_all', 'set_child_theme_allowed_block_types', 15, 2 );
+add_filter('allowed_block_types_all', 'set_child_theme_allowed_block_types', 15, 2);
 
 //Add Idea push signup/login banner on idea details page for non logged in visitors.
-function idea_push_add_login_banner_after_title( $content ) {
-	if ( is_single() && 'idea' === get_post_type() && ! is_user_logged_in() ) {
+function idea_push_add_login_banner_after_title($content) {
+	if (is_single() && 'idea' === get_post_type() && ! is_user_logged_in()) {
 		$custom_content  = '<p class="ideapush-has-yellow-background-color has-text-color has-background notice-banner">';
 		$custom_content .= 'Please <a href="https://planet4.greenpeace.org/wp-admin/" class="share-btn">Log in</a> to the handbook to vote or submit new ideas';
 		$custom_content .= '<br />';
@@ -132,9 +132,9 @@ function idea_push_add_login_banner_after_title( $content ) {
 	return $content;
 }
 
-add_filter( 'the_content', 'idea_push_add_login_banner_after_title', 9, 1);
+add_filter('the_content', 'idea_push_add_login_banner_after_title', 9, 1);
 
-add_action( 'admin_menu', 'create_admin_menu' );
+add_action('admin_menu', 'create_admin_menu');
 
 /**
  * Create menu entry.
@@ -142,7 +142,7 @@ add_action( 'admin_menu', 'create_admin_menu' );
 function create_admin_menu() {
 	$current_user = wp_get_current_user();
 
-	if ( in_array( 'administrator', $current_user->roles, true ) || in_array( 'editor', $current_user->roles, true ) ) {
+	if (in_array('administrator', $current_user->roles, true) || in_array('editor', $current_user->roles, true)) {
 		add_menu_page(
 			'Add an announcement',
 			'Announcements',
@@ -158,17 +158,17 @@ function create_admin_menu() {
  * Render Announcements admin page
  */
 function planet4_render_announcements_page() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if (!current_user_can( 'manage_options')) {
 		return;
 	}
 
 	// Save on submit
-	if ( isset($_POST['planet4_announcements_nonce']) &&
-		wp_verify_nonce($_POST['planet4_announcements_nonce'], 'save_announcements') ) {
+	if (isset($_POST['planet4_announcements_nonce']) &&
+		wp_verify_nonce($_POST['planet4_announcements_nonce'], 'save_announcements')) {
 
 		update_option(
 			'planet4_announcements_content',
-			wp_kses_post( $_POST['planet4_announcements_content'] )
+			wp_kses_post($_POST['planet4_announcements_content'])
 		);
 		update_option(
 			'planet4_announcements_last_updated',
@@ -178,14 +178,14 @@ function planet4_render_announcements_page() {
 		echo '<div class="updated"><p>Announcements updated.</p></div>';
 	}
 
-	$content = get_option( 'planet4_announcements_content', '' );
+	$content = get_option('planet4_announcements_content', '');
 	?>
 
 	<div class="wrap">
 		<h1>Announcements</h1>
 
 		<form method="post">
-			<?php wp_nonce_field( 'save_announcements', 'planet4_announcements_nonce' ); ?>
+			<?php wp_nonce_field('save_announcements', 'planet4_announcements_nonce'); ?>
 
 			<?php
 			wp_editor(
@@ -211,8 +211,8 @@ function planet4_render_announcements_page() {
 /**
  * Register Announcements REST API endpoint
  */
-add_action( 'rest_api_init', function () {
-	register_rest_route( 'planet4/v1', '/announcements', [
+add_action('rest_api_init', function () {
+	register_rest_route('planet4/v1', '/announcements', [
 		'methods'             => 'GET',
 		'callback'            => 'planet4_get_announcements',
 		'permission_callback' => '__return_true', // public endpoint
@@ -226,8 +226,8 @@ function planet4_get_announcements() {
 	return [
 		'content' => apply_filters(
 			'the_content',
-			get_option( 'planet4_announcements_content', '' )
+			get_option('planet4_announcements_content', '')
 		),
-		'last_updated' => get_option( 'planet4_announcements_last_updated' ),
+		'last_updated' => get_option('planet4_announcements_last_updated'),
 	];
 }
