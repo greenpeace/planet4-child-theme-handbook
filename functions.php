@@ -231,3 +231,21 @@ function planet4_get_announcements() {
 		'last_updated' => get_option('planet4_announcements_last_updated'),
 	];
 }
+
+/**
+ * Define a context value to allow translation file mods
+ */
+add_filter('loco_file_mod_allowed_context', function(){
+    return 'loco_file_mod_context';
+} );
+
+/**
+ * Allow file mods for the LoCo plugin.
+ * As long as the current user is at least an Editor.
+ */
+add_filter('file_mod_allowed', function($default,$context){
+    if('loco_file_mod_context' === $context){
+        return current_user_can('edit_others_posts');
+    }
+    return $default;
+}, 10, 2);
