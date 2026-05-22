@@ -240,3 +240,17 @@ add_filter('file_mod_allowed', function($default, $context){
   }
   return $default;
 }, 10, 2);
+
+/**
+ * Deregisteer and re-register custom styles of daext plugin.
+ * By default they conflict with wp-stateless.
+ */
+add_action('wp_enqueue_scripts', function() {
+  if (wp_style_is('daexthefu-custom', 'enqueued') || wp_style_is('daexthefu-custom', 'registered')) {
+    wp_deregister_style('daexthefu-custom');
+
+    $css_creation = filectime(get_stylesheet_directory() . '/css/daext_helpful.css');
+
+    wp_enqueue_style('daexthefu-custom', get_stylesheet_directory_uri() . '/css/daext_helpful.css', [], $css_creation);
+  }
+}, 20);

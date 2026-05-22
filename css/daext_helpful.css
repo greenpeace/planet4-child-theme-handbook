@@ -1,0 +1,230 @@
+.daexthefu-button-text {
+  font-size: 19px !important;
+}
+
+.daexthefu-button-text {
+  font-style: normal !important;
+}
+
+.daexthefu-button-text {
+  font-weight: 400 !important;
+}
+
+.daexthefu-button-text {
+  line-height: 48px !important;
+}
+
+.daexthefu-button-text {
+  color: #1E1E1F !important;
+}
+
+.daexthefu-comment-submit,
+.daexthefu-comment-cancel {
+  font-size: 14px !important;
+}
+
+.daexthefu-comment-submit,
+.daexthefu-comment-cancel {
+  font-style: normal !important;
+}
+
+.daexthefu-comment-submit,
+.daexthefu-comment-cancel {
+  font-weight: 600 !important;
+}
+
+.daexthefu-comment-submit,
+.daexthefu-comment-cancel {
+  line-height: 48px !important;
+}
+
+.daexthefu-comment-submit {
+  background: #2B2D30 !important;
+}
+
+.daexthefu-comment-submit {
+  border-color: #2B2D30 !important;
+}
+
+.daexthefu-comment-cancel {
+  background: #ffffff !important;
+}
+
+.daexthefu-comment-cancel {
+  border-color: #B8B9BA !important;
+}
+
+.daexthefu-comment-label,
+.daexthefu-comment-character-counter-number,
+.daexthefu-comment-character-counter-text,
+.daexthefu-successful-submission-text {
+  font-size: 13px !important;
+}
+
+.daexthefu-comment-label,
+.daexthefu-comment-character-counter-number,
+.daexthefu-comment-character-counter-text,
+.daexthefu-successful-submission-text {
+  font-style: normal !important;
+}
+
+.daexthefu-comment-label,
+.daexthefu-comment-character-counter-number,
+.daexthefu-comment-character-counter-text,
+.daexthefu-successful-submission-text {
+  font-weight: 400 !important;
+}
+
+.daexthefu-comment-label,
+.daexthefu-comment-character-counter-number,
+.daexthefu-comment-character-counter-text,
+.daexthefu-successful-submission-text {
+  line-height: 24px !important;
+}
+
+.daexthefu-comment-label {
+  color: #2E2E2F !important;
+}
+
+.daexthefu-successful-submission-text {
+  color: #2E2E2F !important;
+}
+
+.daexthefu-comment-character-counter-number,
+.daexthefu-comment-character-counter-text {
+  color: #898A8C !important;
+}
+
+.daexthefu-comment-submit {
+  color: #ffffff !important;
+}
+
+.daexthefu-comment-cancel {
+  color: #063F85 !important;
+}
+
+.daexthefu-comment-textarea:focus {
+  border-color: #063F85 !important;
+}
+
+.daexthefu-comment-textarea {
+  font-size: 13px !important;
+}
+
+.daexthefu-comment-textarea {
+  font-style: normal !important;
+}
+
+.daexthefu-comment-textarea {
+  font-weight: 400 !important;
+}
+
+.daexthefu-comment-textarea {
+  line-height: 24px !important;
+}
+
+.daexthefu-comment-textarea {
+  color: #1E1E1F !important;
+}
+
+.daexthefu-comment-textarea {
+  background: #ffffff !important;
+}
+
+.daexthefu-comment-textarea {
+  border-color: #E7E7E8 !important;
+}
+
+.daexthefu-container {
+  border-width: 1px 0 !important;
+}
+
+.daexthefu-container {
+  border-color: #E7E7E8 !important;
+}
+
+.daexthefu-container {
+  padding: 32px 0px !important;
+}
+
+.daexthefu-container {
+  margin: 64px 0px;
+}
+
+.daexthefu-title {
+  font-size: 24px !important;
+}
+
+.daexthefu-title {
+  font-style: normal !important;
+}
+
+.daexthefu-title {
+  font-weight: 600 !important;
+}
+
+.daexthefu-title {
+  line-height: 48px !important;
+}
+
+.daexthefu-title {
+  color: #424447 !important;
+}
+
+.daexthefu-description {
+  line-height: px !important;
+}
+
+.daexthefu-description {
+  color: px !important;
+}
+
+.happy-face-cls-1,
+.sad-face-cls-1,
+.thumb-up-cls-1,
+.thumb-down-cls-1 {
+  fill: #c8c8c8 !important;
+}
+
+.happy-face-cls-3,
+.sad-face-cls-4,
+.thumb-up-cls-3,
+.thumb-down-cls-3 {
+  fill: #666666 !important;
+}
+
+.daexthefu-yes:hover .daexthefu-icon-primary-color,
+.daexthefu-yes-selected .daexthefu-icon-primary-color {
+  fill: #7db340 !important;
+}
+
+.daexthefu-yes:hover .daexthefu-icon-secondary-color,
+.daexthefu-yes-selected .daexthefu-icon-secondary-color {
+  fill: #397038 !important;
+}
+
+.daexthefu-no:hover .daexthefu-icon-primary-color,
+.daexthefu-no-selected .daexthefu-icon-primary-color {
+  fill: #e89795 !important;
+}
+
+.daexthefu-no:hover .daexthefu-icon-secondary-color,
+.daexthefu-no-selected .daexthefu-icon-secondary-color {
+  fill: #94322c !important;
+}
+
+.daexthefu-button-type-icon-and-text.daexthefu-button.daexthefu-yes,
+.daexthefu-button-type-text.daexthefu-button.daexthefu-yes,
+.daexthefu-button-type-icon-and-text.daexthefu-button.daexthefu-no,
+.daexthefu-button-type-text.daexthefu-button.daexthefu-no {
+  background: #E7E7E8 !important;
+}
+
+.daexthefu-icon-circle {
+  fill: #dddddd !important;
+}
+
+.daexthefu-button,
+.daexthefu-comment-textarea {
+  border-radius: 4px !important;
+}
