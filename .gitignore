@@ -1,9 +1,2 @@
-\.idea/inspectionProfiles/Project_Default\.xml
-
-\.idea/modules\.xml
-
-\.idea/planet4-child-theme-handbook\.iml
-
-\.idea/vcs\.xml
-
-\.idea/workspace\.xml
+vendor
+composer.lock

@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Additional code for the child theme goes in here.
- */
-
 add_action('wp_enqueue_scripts', 'enqueue_child_styles', 99);
 add_filter('wp_kses_allowed_html', 'set_custom_allowed_attributes_filter_handbook');
 add_action('admin_bar_menu', 'customize_visit_site', 80);
@@ -19,7 +15,7 @@ add_filter('idea_push_change_author_link', 'idea_push_change_author_link_callbac
  * @return string
  */
 function idea_push_change_author_link_callback($userId) {
-	return get_author_posts_url($userId);
+  return get_author_posts_url($userId);
 }
 
 /**
@@ -31,45 +27,42 @@ function idea_push_change_author_link_callback($userId) {
  * @return array
  */
 function set_custom_allowed_attributes_filter_handbook($allowedposttags) {
-	// Allow style so that ideaPush works.
-	$allowedposttags['style']=[];
-	$allowedposttags['div'] = [
-		'class' => true,
-		'data' => true,
-		'align' => true,
-		'style' => true,
-	];
+  // Allow style so that ideaPush works.
+  $allowedposttags['style']=[];
+  $allowedposttags['div'] = [
+    'class' => true,
+    'data' => true,
+    'align' => true,
+    'style' => true,
+  ];
 
-	// Allow below tags for carousel slider.
-	$allowedposttags['div']['data-render'] = true;
-	$allowedposttags['div']['data-attributes'] = true;
+  // Allow below tags for carousel slider.
+  $allowedposttags['div']['data-render'] = true;
+  $allowedposttags['div']['data-attributes'] = true;
 
-	return $allowedposttags;
+  return $allowedposttags;
 }
 
 function enqueue_child_styles() {
-	$css_creation = filectime(get_stylesheet_directory() . '/style.css');
+  $css_creation = filectime(get_stylesheet_directory() . '/style.css');
 
-	wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', [], $css_creation);
+  wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', [], $css_creation);
 }
 
 const BLOCK_ALLOWLIST = [
-	'post' => [
-		// E.g.: 'gpnl/blockquote'.
-		'core/code',
-		'core/preformatted',
-	],
-	'page' => [
-		'core/code',
-		'core/preformatted',
-	],
+  'post' => [
+    'core/code',
+    'core/preformatted',
+  ],
+  'page' => [
+    'core/code',
+    'core/preformatted',
+  ],
 ];
 
 const BLOCK_DENYLIST = [
-	'post' => [
-		// E.g.: 'planet4-blocks/gallery' or 'core/quote'.
-	],
-	'page' => [],
+  'post' => [],
+  'page' => [],
 ];
 
 /**
@@ -81,55 +74,53 @@ const BLOCK_DENYLIST = [
  * @return array Array with allowed types.
  */
 function set_child_theme_allowed_block_types($allowed_block_types, $context) {
-	$post_type = $context->post ? $context->post->post_type : null;
-	if (!$post_type) {
-		return array_merge($allowed_block_types, BLOCK_ALLOWLIST['page']);
-	}
+  $post_type = $context->post ? $context->post->post_type : null;
+  if (!$post_type) {
+    return array_merge($allowed_block_types, BLOCK_ALLOWLIST['page']);
+  }
 
-	if (!empty( BLOCK_ALLOWLIST[$post_type])) {
-		$allowed_block_types = array_merge($allowed_block_types, BLOCK_ALLOWLIST[$post_type]);
-	}
+  if (!empty(BLOCK_ALLOWLIST[$post_type])) {
+    $allowed_block_types = array_merge($allowed_block_types, BLOCK_ALLOWLIST[$post_type]);
+  }
 
-	if ( ! empty( BLOCK_DENYLIST[ $post_type ] )) {
-		$allowed_block_types = array_filter($allowed_block_types, function ($element) use ($post_type) {
-			return !in_array($element, BLOCK_DENYLIST[$post_type]);
-		} );
-	}
+  if (!empty(BLOCK_DENYLIST[$post_type])) {
+    $allowed_block_types = array_filter($allowed_block_types, function ($element) use ($post_type) {
+      return !in_array($element, BLOCK_DENYLIST[$post_type]);
+    });
+  }
 
-	// array_values is required as array_filter removes indexes from the array.
-	return array_values($allowed_block_types);
+  // array_values is required as array_filter removes indexes from the array.
+  return array_values($allowed_block_types);
 }
 
 function customize_visit_site($wp_admin_bar) {
+  // Get a reference to the view-site node to modify.
+  $node = $wp_admin_bar->get_node('view-site');
+  if (!$node) {
+    return;
+  }
 
-    // Get a reference to the view-site node to modify.
-    $node = $wp_admin_bar->get_node('view-site');
-    if (!$node) {
-        return;
-    }
-
-	// Update "visit site" link.
-	$node->href = home_url() . '/handbook/';
-    $wp_admin_bar->add_node($node);
+  // Update "visit site" link.
+  $node->href = home_url() . '/handbook/';
+  $wp_admin_bar->add_node($node);
 }
 
 add_filter('allowed_block_types_all', 'set_child_theme_allowed_block_types', 15, 2);
 
 //Add Idea push signup/login banner on idea details page for non logged in visitors.
 function idea_push_add_login_banner_after_title($content) {
-	if (is_single() && 'idea' === get_post_type() && ! is_user_logged_in()) {
-		$custom_content  = '<p class="ideapush-has-yellow-background-color has-text-color has-background notice-banner">';
-		$custom_content .= 'Please <a href="https://planet4.greenpeace.org/wp-admin/" class="share-btn">Log in</a> to the handbook to vote or submit new ideas';
-		$custom_content .= '<br />';
-		$custom_content .= 'Don\'t have a Handbook account? Just send us an <a href="mailto:?to=planet4-pm-group@greenpeace.org" target="_blank">email</a>';
-		$custom_content .= '</p>';
+  if (is_single() && 'idea' === get_post_type() && ! is_user_logged_in()) {
+    $custom_content  = '<p class="ideapush-has-yellow-background-color has-text-color has-background notice-banner">';
+    $custom_content .= 'Please <a href="https://planet4.greenpeace.org/wp-admin/" class="share-btn">Log in</a> to the handbook to vote or submit new ideas';
+    $custom_content .= '<br />';
+    $custom_content .= 'Don\'t have a Handbook account? Just send us an <a href="mailto:?to=planet4-pm-group@greenpeace.org" target="_blank">email</a>';
+    $custom_content .= '</p>';
+    $custom_content .= $content;
 
-		$custom_content .= $content;
+    return $custom_content;
+  }
 
-		return $custom_content;
-	}
-
-	return $content;
+  return $content;
 }
 
 add_filter('the_content', 'idea_push_add_login_banner_after_title', 9, 1);
@@ -140,112 +131,112 @@ add_action('admin_menu', 'create_admin_menu');
  * Create menu entry.
  */
 function create_admin_menu() {
-	$current_user = wp_get_current_user();
+  $current_user = wp_get_current_user();
 
-	if (in_array('administrator', $current_user->roles, true) || in_array('editor', $current_user->roles, true)) {
-		add_menu_page(
-			'Add an announcement',
-			'Announcements',
-			'manage_options',
-			'p4announcements',
-			'planet4_render_announcements_page',
-			'dashicons-megaphone'
-		);
-	}
+  if (in_array('administrator', $current_user->roles, true) || in_array('editor', $current_user->roles, true)) {
+    add_menu_page(
+      'Add an announcement',
+      'Announcements',
+      'manage_options',
+      'p4announcements',
+      'planet4_render_announcements_page',
+      'dashicons-megaphone'
+    );
+  }
 }
 
 /**
  * Render Announcements admin page
  */
 function planet4_render_announcements_page() {
-	if (!current_user_can( 'manage_options')) {
-		return;
-	}
+  if (!current_user_can( 'manage_options')) {
+    return;
+  }
 
-	// Save on submit
-	if (isset($_POST['planet4_announcements_nonce']) &&
-		wp_verify_nonce($_POST['planet4_announcements_nonce'], 'save_announcements')) {
+    // Save on submit
+  if (isset($_POST['planet4_announcements_nonce']) &&
+    wp_verify_nonce($_POST['planet4_announcements_nonce'], 'save_announcements')) {
 
-		update_option(
-			'planet4_announcements_content',
-			wp_kses_post($_POST['planet4_announcements_content'])
-		);
-		update_option(
-			'planet4_announcements_last_updated',
-			current_datetime()->format('Y-m-d H:i:s')
-		);
+    update_option(
+      'planet4_announcements_content',
+        wp_kses_post($_POST['planet4_announcements_content'])
+      );
+      update_option(
+        'planet4_announcements_last_updated',
+        current_datetime()->format('Y-m-d H:i:s')
+      );
 
-		echo '<div class="updated"><p>Announcements updated.</p></div>';
-	}
+      echo '<div class="updated"><p>Announcements updated.</p></div>';
+  }
 
-	$content = get_option('planet4_announcements_content', '');
-	?>
+  $content = get_option('planet4_announcements_content', '');
+  ?>
 
-	<div class="wrap">
-		<h1>Announcements</h1>
+  <div class="wrap">
+    <h1>Announcements</h1>
 
-		<form method="post">
-			<?php wp_nonce_field('save_announcements', 'planet4_announcements_nonce'); ?>
+    <form method="post">
+      <?php wp_nonce_field('save_announcements', 'planet4_announcements_nonce'); ?>
 
-			<?php
-			wp_editor(
-				$content,
-				'planet4_announcements_content',
-				[
-					'textarea_name' => 'planet4_announcements_content',
-					'media_buttons' => false,
-					'teeny'         => false,
-					'textarea_rows' => 10,
-				]
-			);
-			?>
+      <?php
+        wp_editor(
+          $content,
+          'planet4_announcements_content',
+          [
+            'textarea_name' => 'planet4_announcements_content',
+            'media_buttons' => false,
+            'teeny' => false,
+            'textarea_rows' => 10,
+          ]
+        );
+      ?>
 
-			<p>
-				<input type="submit" class="button button-primary" value="Save Announcements">
-			</p>
-		</form>
-	</div>
-	<?php
+      <p>
+        <input type="submit" class="button button-primary" value="Save Announcements">
+      </p>
+    </form>
+  </div>
+  <?php
 }
 
 /**
  * Register Announcements REST API endpoint
  */
 add_action('rest_api_init', function () {
-	register_rest_route('planet4/v1', '/announcements', [
-		'methods'             => 'GET',
-		'callback'            => 'planet4_get_announcements',
-		'permission_callback' => '__return_true', // public endpoint
-	]);
+  register_rest_route('planet4/v1', '/announcements', [
+    'methods'             => 'GET',
+    'callback'            => 'planet4_get_announcements',
+    'permission_callback' => '__return_true', // public endpoint
+  ]);
 });
 
 /**
  * Return announcements content
  */
 function planet4_get_announcements() {
-	return [
-		'content' => apply_filters(
-			'the_content',
-			get_option('planet4_announcements_content', '')
-		),
-		'last_updated' => get_option('planet4_announcements_last_updated'),
-	];
+  return [
+    'content' => apply_filters(
+      'the_content',
+      get_option('planet4_announcements_content', '')
+    ),
+    'last_updated' => get_option('planet4_announcements_last_updated'),
+  ];
 }
 
 /**
  * Define a context value to allow translation file mods
  */
-add_filter('loco_file_mod_allowed_context', function(){
-    return 'loco_file_mod_context';
-} );
+add_filter('loco_file_mod_allowed_context', function() {
+  return 'loco_file_mod_context';
+});
 
 /**
  * Allow file mods for the LoCo plugin.
  * As long as the current user is at least an Editor.
  */
-add_filter('file_mod_allowed', function($default,$context){
-    if('loco_file_mod_context' === $context){
-        return current_user_can('edit_others_posts');
-    }
-    return $default;
+add_filter('file_mod_allowed', function($default, $context){
+  if('loco_file_mod_context' === $context) {
+    return current_user_can('edit_others_posts');
+  }
+  return $default;
 }, 10, 2);
